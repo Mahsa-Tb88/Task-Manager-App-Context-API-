@@ -1,16 +1,23 @@
 import { useRef, useState } from "react";
 import "./AddTask.scss";
 import { getAllTasks, getTasks, saveTasks } from "../../utils/storage";
-export default function AddTask({
-  title,
-  setTitle,
-  handleAddTask,
-  completed,
-  setCompleted,
-}) {
+import { useTaskContext } from "../../Context/TasksContext";
+export default function AddTask() {
+  const { handleAddTask } = useTaskContext();
+  const [title, setTitle] = useState("");
+  const [completed, setCompleted] = useState(false);
+  function onAddTask(e) {
+    e.preventDefault();
+    if (!title) {
+      return;
+    }
+    handleAddTask(title, completed);
+    setTitle("");
+    setCompleted(false);
+  }
   return (
     <div>
-      <form className="add-task-form" onSubmit={handleAddTask}>
+      <form className="add-task-form" onSubmit={onAddTask}>
         <div className="input-group input-group-lg">
           <input
             type="text"

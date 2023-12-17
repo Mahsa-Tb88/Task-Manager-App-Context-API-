@@ -1,5 +1,11 @@
 import "./Filter.scss";
-export default function Filter({ changeStatus, changeSearch, currentStatus,search }) {
+
+export default function Filter({
+  changeStatus,
+  changeSearch,
+  currentStatus,
+  search,
+}) {
   return (
     <div className="filter flex-column flex-md-row align-items-md-center ">
       <div>

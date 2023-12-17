@@ -1,15 +1,9 @@
-import { useState } from "react";
 import "./Task.scss";
+import { useTaskContext } from "../../Context/TasksContext";
 
-export default function Task({
-  task,
-  onEdit,
-  onToggle,
-  idEdit,
-  setEditTitle,
-  editTitle,
-  onDelete
-}) {
+export default function Task({ task }) {
+  const { onToggle, onEdit, idEdit, setEditTitle, editTitle, onDelete } =
+    useTaskContext();
   const statusClasses = [
     "status",
     task.completed ? "bg-success" : "bg-secondary",
